@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
-                    sh "python -V >> abcd"
+                    sh "python3 -V >> abcd"
                 }
             }
             post {
