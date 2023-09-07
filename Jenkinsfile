@@ -24,8 +24,7 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
-                    sh "touch abcd"
-                    sh "echo abc >> abcd"
+                    sh "pip list >> abcd"
                 }
             }
             post {
@@ -34,6 +33,5 @@ pipeline {
                 }
             }
         }
-        
     }
 }
