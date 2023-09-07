@@ -15,7 +15,7 @@ pipeline {
                     sh '. venv/bin/activate'
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
 
-                    sh 'pip install -r sources/requirements.txt'
+                    sh 'sudo pip install -r sources/requirements.txt'
                     sh 'pip list >> abcd'
                     stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
