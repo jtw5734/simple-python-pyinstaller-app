@@ -12,7 +12,6 @@ pipeline {
             }
             steps {
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                    sh 'python3 -m pip install -user "test" '
 
                     sh 'virtualenv venv --distribute'
                     sh '. venv/bin/activate'
