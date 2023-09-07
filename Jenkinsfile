@@ -11,15 +11,13 @@ pipeline {
                 }
             }
             steps {
-                dir(path: env.BUILD_ID) {
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
                     sh 'python -V >> abcd'
                     stash(name: 'compiled-results', includes: 'sources/*.py*')
-                }
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/abcd"
+                    archiveArtifacts "abcd"
                 }
             }
         }
