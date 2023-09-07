@@ -11,10 +11,10 @@ pipeline {
                 }
             }
             steps {
+                    sh 'python -m venv ./venv'
+                    sh '. venv/bin/activate'
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
 
-                    sh 'virtualenv venv --distribute'
-                    sh '. venv/bin/activate'
                     sh 'pip install -r sources/requirements.txt'
                     sh 'pip list >> abcd'
                     stash(name: 'compiled-results', includes: 'sources/*.py*')
