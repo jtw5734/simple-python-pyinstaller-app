@@ -19,12 +19,13 @@ pipeline {
             agent any
             environment {
                 VOLUME = '$(pwd)/sources:/src'
-                IMAGE = 'ubuntu:latest'
+                IMAGE = 'python:3.11.5-alpine3.18'
             }
             steps {
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
                     sh "touch abcd"
+                    sh "echo abc >> abcd"
                 }
             }
             post {
