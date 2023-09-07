@@ -19,12 +19,15 @@ pipeline {
             agent any
             environment {
                 VOLUME = '$(pwd)/sources:/src'
-                IMAGE = 'python:3.11.5-alpine3.18'
+                IMAGE = 'ubuntu:23.04'
             }
             steps {
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
-                    sh "pip list >> abcd"
+                    sh "apt-get update && apt-get install -y"
+                    sh "sudo apt-get install python3-pip"
+                    sh "sudo apt-get install python3.11"
+                    sh "python -V >> abcd"
                 }
             }
             post {
