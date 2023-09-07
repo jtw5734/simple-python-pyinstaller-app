@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
-                    sh "apt-get update && apt-get install -y"
+                    sh "sudo apt-get update && apt-get install -y"
                     sh "sudo apt-get install python3-pip"
                     sh "sudo apt-get install python3.11"
                     sh "python -V >> abcd"
