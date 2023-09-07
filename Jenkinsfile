@@ -12,8 +12,7 @@ pipeline {
             }
             steps {
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                    sh 'pip3 install pymongo'
-                    sh 'pip3 list >> abcd'
+                    sh 'pip list >> abcd'
                     stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
             post {
