@@ -7,11 +7,10 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'ubuntu:23.04'
+                    image 'python:3.11'
                 }
             }
             steps {
-                    sh 'apt install -y python3.11'
                     sh 'python -m venv ./venv'
                     sh 'source venv/bin/activate'
                     sh 'sudo pip install -r sources/requirements.txt'
