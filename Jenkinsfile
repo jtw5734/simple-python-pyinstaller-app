@@ -14,9 +14,9 @@ pipeline {
             steps {
                     sh 'python -m venv ./venv'
                     sh 'source venv/bin/activate'
-                    sh 'python -m py_compile sources/add2vals.py sources/calc.py'
                     sh 'pip install -r sources/requirements.txt'
                     sh 'pip list > abcd'
+                    sh 'python sources/main.py'
                     stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
             post {
