@@ -14,15 +14,15 @@ pipeline {
             steps {
                     sh 'python -m venv ./venv'
                     sh 'source venv/bin/activate'
-                    sh 'pip install -r sources/requirements.txt'
+                    sh 'pip install -r src/requirements.txt'
                     sh 'pip list > abcd'
-                    sh 'cd sources'
+                    sh 'cd src'
                     sh 'make onefile'
-                    stash(name: 'compiled-results', includes: 'sources/*.py*')
+                    stash(name: 'compiled-results', includes: 'src/*.py*')
             }
             post {
                 success {
-                    archiveArtifacts "sources/dist/dot_local_api"
+                    archiveArtifacts "dist/dot_local_api"
                 }
             }
         }

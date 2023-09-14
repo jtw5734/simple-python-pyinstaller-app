@@ -18,9 +18,9 @@ FILENAME=$(name)
 # Pyinstaller options
 PYINSTALLER=pyinstaller -y
 CLEAN=--clean
-MAIN_FILE=./main.py
+MAIN_FILE=./src/main.py
 OUTPUT_NAME=--name $(FILENAME)
-EXTRA_HOOKS=--additional-hooks-dir ./extra-hooks
+EXTRA_HOOKS=--additional-hooks-dir ./src/extra-hooks
 ONEFILE=--onefile
 ONEDIR=--onedir
 
