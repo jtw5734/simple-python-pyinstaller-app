@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                    sh 'apt-get update'
+                    sh 'apt-get update -y'
                     sh 'apt-get install python3.11 python3-distutils -y'
                     sh 'curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
                     sh 'python3 get-pip.py'
