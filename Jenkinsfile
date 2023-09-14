@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'ubuntu:3.11'
+                    image 'python:3.11'
                     args '-u root --privileged'
                 }
             }
