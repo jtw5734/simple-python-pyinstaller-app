@@ -12,8 +12,6 @@ pipeline {
                 }
             }
             steps {
-                    sh 'python -m venv ./venv'
-                    sh 'source venv/bin/activate'
                     sh 'pip install -r src/requirements.txt'
                     sh 'pip list > abcd'
                     sh 'cd src'
