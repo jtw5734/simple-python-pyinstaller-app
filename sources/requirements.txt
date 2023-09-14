@@ -1,1 +1,2 @@
-pymongo
+pyserial=3.5
+pymongo==3.9.0
