@@ -11,8 +11,6 @@ pipeline {
                 }
             }
             steps {
-                    sh 'python -m venv ./venv'
-                    sh 'source venv/bin/activate'
                     sh 'sudo pip install -r sources/requirements.txt'
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
 
