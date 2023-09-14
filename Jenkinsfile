@@ -7,14 +7,14 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'ubuntu:23.04'
+                    image 'python:3.11.5-alpine3.18'
                     args '-u root --privileged'
                 }
             }
             steps {
                     sh 'pip install -r src/requirements.txt'
                     sh 'pip list > abcd'
-                    sh 'cd src'
+                    sh 'sudo apt-get install binutils'
                     sh 'pyinstaller -y --clean --name dot_local_api --additional-hooks-dir ./src/extra-hooks ./src/main.py --onefile'
                     sh 'ls -l > abcd'
                     stash(name: 'compiled-results', includes: 'src/*.py*')
