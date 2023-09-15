@@ -34,8 +34,6 @@ pipeline {
                 }
             }
             steps {
-                    sh 'apt-get install binutils'
-                    sh 'ls -l > abcd'
                     sh 'pip install requests==2.21.0'
                     sh 'python gh_release.py > release.log'
             }
