@@ -4,7 +4,7 @@ import os
 VERSION = "v1.0.7"
 
 class gh:
-    TOKEN="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"
+    TOKEN="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"
     OWNER="jtw5734"
     REPO="simple-python-pyinstaller-app"
     
