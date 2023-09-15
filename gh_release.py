@@ -1,8 +1,7 @@
 import requests
 import json
 import os
-VERSION = "v1.0.7"
-
+VERSION = "v1.0.8"
 class gh:
     TOKEN1 ="ghp_gfP09EAaqg00cw9q"
     TOKEN2 = "gn1hhQ84LC5uVW2IF9pn "
