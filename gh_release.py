@@ -4,10 +4,9 @@ import os
 VERSION = "v1.0.7"
 
 class gh:
-    TOKEN="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 "
+    TOKEN="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"
     OWNER="jtw5734"
     REPO="simple-python-pyinstaller-app"
-    TAG = "v1.0.0"
     
     header = {"Accept" : "application/vnd.github+json", "Authorization" : f"Bearer {TOKEN}", "X-GitHub-Api-Version" : "2022-11-28"}
 
@@ -15,7 +14,7 @@ class gh:
     def get_releases(self):
         res = requests.get(f"https://api.github.com/repos/{self.OWNER}/{self.REPO}/releases/latest", headers= self.header)
 
-        # print(json.dumps(res.json(), ensure_ascii=False, indent=3))
+        print(json.dumps(res.json(), ensure_ascii=False, indent=3))
         if (res.status_code) == 200:
             res = res.json()
             self.RELEASE_ID = res.get("id")
