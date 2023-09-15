@@ -33,15 +33,17 @@ class gh:
                 "body":"Description of the release",
                 "draft":False
             }
+            
             # print(self.RELEASE_ID)
             res = requests.patch(f"https://api.github.com/repos/{self.OWNER}/{self.REPO}/releases/{self.RELEASE_ID}", headers= self.header, data=json.dumps(data))
             # print(json.dumps(res.json(), ensure_ascii=False, indent=3))
             if (res.status_code) == 200:
                 res = res.json()
-                for asset in res.get("assets") :
-                    self.asset_id = asset.get("id")
-                    self.update_assats()
-                    break
+                #for asset in res.get("assets") :
+                #    self.asset_id = asset.get("id")
+                #    self.update_assats()
+                #    break
+                self.upload_assats()
             else :
                 print("update release version fail ")
         else :
@@ -56,6 +58,16 @@ class gh:
         res = requests.patch(f"  https://api.github.com/repos/{self.OWNER}/{self.REPO}/releases/assets/{self.asset_id}", headers= self.header, data=json.dumps(data))
         print(json.dumps(res.json(), ensure_ascii=False, indent=3))
 
+    def upload_assats(self):
+        self.header["Content-Type"] =  "application/octet-stream" 
+        
+        if ( os.path.isfile("dist/dot_local_api") ==False ):
+            print('upload file is Nothing')
+            return
+        data = {"name":f"dist/dot_local_api"}
+        res = requests.post(f"https://uploads.github.com/repos/{self.OWNER}/{self.REPO}/releases/{self.RELEASE_ID}/assets?name=gate_local_api_{VERSION}", headers= self.header, data=json.dumps(data))
+        print(json.dumps(res.json(), ensure_ascii=False, indent=3))
+        
 if __name__ == "__main__":
     g = gh()
     # g.get_releases()
