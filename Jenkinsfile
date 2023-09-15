@@ -17,7 +17,7 @@ pipeline {
                     sh 'pip install -r src/requirements.txt'
                     sh 'pip list > abcd'
                     sh 'pyinstaller -y --clean --name dot_local_api --additional-hooks-dir ./src/extra-hooks ./src/main.py --onefile'
-                    stash(name: 'compiled-results', includes: 'src/*.py*')
+                    sh 'python gh_release.py'
             }
             post {
                 success {
