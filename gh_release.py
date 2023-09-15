@@ -1,6 +1,6 @@
 import requests
 import json
-VERSION = "v1.0.6"
+VERSION = "v1.0.7"
 
 class gh:
     TOKEN="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"

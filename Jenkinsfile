@@ -26,6 +26,25 @@ pipeline {
                 }
             }
         }
+        stage('github release') {
+            agent {
+                docker {
+                    image 'python:3.11'
+                    args '-u root --privileged'
+                }
+            }
+            steps {
+                    sh 'apt-get install binutils'
+                    sh 'ls -l > abcd'
+                    sh 'pip install requests==2.21.0'
+                    sh 'python gh_release.py > release.log'
+            }
+            post {
+                success {
+                    archiveArtifacts "release.log"
+                }
+            }
+        }
 
     }
 }
